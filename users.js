@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 // 1. Get All Users (READ)
 app.get('/users', (req, res) => {
-    db.query('SELECT * FROM users', (err, results) => {
+    db.query('SELECT * FROM users ORDER BY created_at DESC', (err, results) => {
         if (err) return res.status(500).json(err);
         res.json(results);
     });
@@ -48,5 +48,5 @@ app.delete('/users/:id', (req, res) => {
 });
 
 app.listen(5001, () => {
-    console.log('Server running on port 5000');
+    console.log('Server running on port 5001');
 });
